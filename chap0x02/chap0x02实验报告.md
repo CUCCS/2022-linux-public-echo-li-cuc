@@ -41,9 +41,9 @@
 | ------------ | ------------------------------ | ------------------------------------------------------------ |
 | 安装tmux     | `apt install tmux`             | `sudo yum install tmux`                                      |
 | 安装tshark   | `apt install tshark`           | `yum whatprovides tshark`<br>`yum install wireshark`         |
-| 查看安装路径 | `dpkg -L tmux`或`tshark`       | `rpm -qal |grep tmux`或`tshark` <br> `which tmux huo tshark`<br>`find / -name tmux` 或`tshark` |
+| 查看安装路径 | `dpkg -L tmux`或`tshark`       | `rpm -qal \|grep tmux`或`tshark` <br> `which tmux `或` tshark`<br>`find / -name tmux` 或`tshark` |
 | 卸载         | `apt remove tmux/tshark`       | `sudo yum remove tmux` 或 `tshark`                           |
-| 验证卸载结果 | `apt-cache policy tmux/tshark` | `rpm -qal |grep tmux`或`tshark` ，若没有路径说明已经卸载     |
+| 验证卸载结果 | `apt-cache policy tmux/tshark` | `rpm -qal \|grep tmux`或`tshark` ，若没有路径说明已经卸载    |
 
 - ubuntu 20.04
 
@@ -57,8 +57,8 @@
 
 |                                      | 找到 `/tmp` 目录及其所有子目录下，文件名包含 `666` 的所有文件 | 找到 `/tmp` 目录及其所有子目录下，文件内容包含 `666` 的所有文件 |
 | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ubuntu 20.04                         | `sudo find /tmp -name 'test*666*' `<br> `sudo find /tmp -name 'test*'|grep "666" `<br> `find test*  |grep 666` | `sudo grep --recursive '666' /tmp`<br>` sudo find test*|xargs grep -r "666"` |
-| CentOS Linux release 7.7.1908 (Core) | `find -name '*666*'`<br>`find -name 'test*' | grep 666' `<br>`find test*| grep 666` | `grep --recursive '666' /tmp`<br>`find test* | xargs grep -r "666"` |
+| ubuntu 20.04                         | `sudo find /tmp -name 'test*666*' `<br> `sudo find /tmp -name 'test*'\|grep "666" `<br> `find test*\|grep 666` | `sudo grep --recursive '666' /tmp`<br>` sudo find test*\|xargs grep -r "666"` |
+| CentOS Linux release 7.7.1908 (Core) | `find -name '*666*'`<br>`find -name 'test*' \| grep 666' `<br>`find test*\| grep 666` | `grep --recursive '666' /tmp`<br>`find test*\| xargs grep -r "666"` |
 
 
 
@@ -124,7 +124,7 @@
 | 主要使用指令                          | 意义                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
 | `ping`                                | ping 域名                                                    |
-| `ps aux | grep ping`                  | 查看进程的ID                                                 |
+| `ps aux \| grep ping`                 | 查看进程的ID                                                 |
 | `ping 域名 &`                         | &表示后台执行                                                |
 | `ping 域名 1>/dev/null 2>&1`          | 表示ping的输出都送到/dev/null目录下，也就是丢掉输出          |
 | `fg`                                  | 把后台进程提到前台                                           |
@@ -142,12 +142,12 @@
 
 ### 硬件信息获取
 
-|           | ubuntu 20.04                                          | CentOS Linux release 7.7.1908 (Core) |
-| --------- | ----------------------------------------------------- | ------------------------------------ |
-| CPU的信息 | `report-hw |grep cp`                                  | `lscpu`                              |
-| 内存大小  | `report-hw |grep mem`                                 | `lsmem`                              |
-| 硬盘数量  | `report-hw | grep df`<br>`sudo fdisk -l`<br> `lsdsk`  | `lsblk`<br>`fdisk -l`                |
-| 硬盘容量  | `report-hw |grep df`<br/>`sudo fdisk -l`<br/> `lsdsk` | `lsblk`<br>`fdisk -l`                |
+|           | ubuntu 20.04                                           | CentOS Linux release 7.7.1908 (Core) |
+| --------- | ------------------------------------------------------ | ------------------------------------ |
+| CPU的信息 | `report-hw \|grep cp`                                  | `lscpu`                              |
+| 内存大小  | `report-hw \|grep mem`                                 | `lsmem`                              |
+| 硬盘数量  | `report-hw \| grep df`<br>`sudo fdisk -l`<br> `lsdsk`  | `lsblk`<br>`fdisk -l`                |
+| 硬盘容量  | `report-hw \|grep df`<br/>`sudo fdisk -l`<br/> `lsdsk` | `lsblk`<br>`fdisk -l`                |
 
 - 查看ubuntu 20.04硬件信息
 
