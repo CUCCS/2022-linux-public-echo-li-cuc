@@ -12,7 +12,7 @@
 
 ## 实验问题
 
-1. 依据[Systemd 入门教程：命令篇 ]([Systemd 入门教程：命令篇 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html))完成基本操作
+1. 依据[Systemd 入门教程：命令篇 ](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)完成基本操作
 2. 依据[Systemd 入门教程：实战篇 ](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)完成基本操作
 3. 本章结束后的自查清单
 
