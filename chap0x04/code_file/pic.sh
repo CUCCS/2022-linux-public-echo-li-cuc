@@ -2,17 +2,17 @@
 
 #先写一个help，搭框架。有问题再修改.
 function help { 
-    echo "-h        Show this help"
-    echo "-g        Compress all Jpeg pictures with gzip"
-    echo "-b        Compress all Jpeg pictures with bzip2"
-    echo "-t        Create an archive and compress"
-    echo "-s        Compress the rasolution while keep the aspect ratio"
-    echo "-w        Watermark the picture"
+    echo "usage:bash pic.sh {-h|-b|...}[-h|-b|...].. target_folder"
+    echo "-h          Show this help"
+    echo "-b          Compress all Jpeg pictures with bzip2"
+    echo "-t          Create an archive and compress"
+    echo "-s N%       Compress the rasolution while keep the aspect ratio"
+    echo "-w text     Watermark the picture"
+    echo "-p text     add prefix"
+    echo "-r text     add suffix"
+    echo "-c          change syg/png to jpg"
 }
 
-function gzipJpeg {
-    find "$1" -name "*.jpg" | xargs gzip 
-}
 
 function bzip2Jpeg {
     find "$1" -name "*.jpg" | xargs bzip2 
@@ -21,7 +21,6 @@ function bzip2Jpeg {
 function bunzip2Jpeg {
     find "$1" -name "*.bz2" | xargs bunzip2
 }
-
 
 function tarJpeg {
     find "$1" -name "*.jpg" | xargs tar -czf "$1/JpegTar.tar.gz"
@@ -35,20 +34,41 @@ function scalePicture {
 }
 
 function watermark {
-    cd "$1" || (echo "didn't find $1"&&exit) 
-    mogrify -pointsize 16 -fill white -weight bolder -gravity southeast -annotate +5+5 "$2" * 
+    cd "$1" || (echo "didn't find $1"&&exit 1) 
+    mogrify -pointsize 16 -fill white -weight bolder -font Arial -gravity southeast -annotate +5+5 "$2" ./* 
+}
+
+function prefix {
+    cd "$1" || (echo "didn't find $1"&& exit 1)
+    for file in *; do
+    mv -f "$file" "$2_$file"
+    done
+}
+
+function suffix {
+    cd "$1" || (echo "didn't find $1" && exit 1)
+    for file in *; do
+        origin_name=${file%.*}
+        extension=${file##*.}
+        mv -f "$file" "${origin_name}_$2.${extension}"
+    done
+}
+
+function changeFormat {
+    cd "$1" || (echo "didn't find $1" && exit 1)
+    for file in -exec $(find "*.png" -o "*.svg"); do
+        origin_name=${file%.*}
+        convert "$file" "${origin_name}.jpg"
+    done
 }
 
 place=${*: -1}
 
-while getopts 'hgbdts:w:' opration; do
+while getopts 'hbdts:w:p:r:c' opration; do
     case $opration in
     h) 
         help
         exit 0 ;;
-
-    g)
-        gzipJpeg "${place}";;
 
     b)
         bzip2Jpeg "${place}" ;;
@@ -64,9 +84,18 @@ while getopts 'hgbdts:w:' opration; do
 
     w)
         watermark "${place}" "$OPTARG" ;;
+    
+    p)
+       prefix "${place}" "$OPTARG" ;;
+    
+    r)
+       suffix "${place}" "$OPTARG" ;;
+    
+    c)
+       changeFormat "${place}" ;;
+
     \?)
        echo "illegal argument"
        exit 1 ;;
     esac
 done
-exit 0
