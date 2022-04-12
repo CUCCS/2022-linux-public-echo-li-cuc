@@ -4,6 +4,7 @@ before_install:
   - sudo apt update
   - sudo apt install -y shellcheck
   - sudo apt install -y imagemagick
+  - sudo apt install ghostscript
 
 script:
   - ls -l
