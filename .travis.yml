@@ -1,0 +1,21 @@
+language: bash
+
+before_install:
+  - sudo apt update
+  - sudo apt install -y shellcheck
+
+script:
+  - ls -l
+  - cd chap0x04/code_file
+  - bash pic.sh -h
+  - bash pic.sh -b ../img
+  - bash pic.sh -d ../img
+  - bash pic.sh -s 50% -w "i love you more than you ever know" ../img
+  - bash pic.sh 
+  - echo "========================================="
+
+after_success:
+  - echo "successfully done"
+
+after_failure:
+  - echo "check failure"
