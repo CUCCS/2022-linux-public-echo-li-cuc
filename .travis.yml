@@ -3,6 +3,7 @@ language: bash
 before_install:
   - sudo apt update
   - sudo apt install -y shellcheck
+  - sudo apt install -y imagemagick
 
 script:
   - ls -l
