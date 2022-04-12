@@ -56,10 +56,13 @@ function suffix {
 
 function changeFormat {
     cd "$1" || (echo "didn't find $1" && exit 1)
-    for file in -exec $(find "*.png" -o "*.svg"); do
-        origin_name=${file%.*}
-        convert "$file" "${origin_name}.jpg"
-    done
+    for file in *; do
+    origin_name=${file%.*}
+    extension=${file##*.}
+    if [[ ${extension} == "png"||${extension} == "svg" ]]; then
+    convert "$file" "${origin_name}.jpg"
+    fi
+    done 
 }
 
 place=${*: -1}
