@@ -15,7 +15,7 @@ script:
   - bash pic.sh -s 50% ../img
   - bash pic.sh -w "i love you more than you ever know" ../img
   - bash pic.sh -p pre -r af ../img
-  - bash pic.sh -c
+  - bash pic.sh -c ../img
   - echo "========================================="
 
 after_success:
