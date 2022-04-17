@@ -14,13 +14,12 @@ function top100host {
     }
     END{
         for(host in hosts)
+        {print host hosts[host] | "sort -r -n -k2"}
+        for (host in hosts)
         {
-            if(times<100)
-            {
-                print host hosts[host] | "sort -r -n -k2"
-                times+=1
-            }
-            break;
+            printf("TOP100:%-30s\n",hosts[host])
+            times+=1
+            if(times>=100)
         }
         }' web_log.tsv
 }
