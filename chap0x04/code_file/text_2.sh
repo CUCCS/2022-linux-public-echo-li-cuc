@@ -22,7 +22,7 @@ function top100host {
             }
             break;
         }
-        }'
+        }' web_log.tsv
 }
 
 
