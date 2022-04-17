@@ -50,10 +50,8 @@ $9!="Player"{
     if(names[name]=="longest" && len>=length(name) && name!=$9)
     {
       names[$9]="longest";
-      printf("%s大于等于%s\n",$9,name);
       if(len>length(name))
       {
-        printf("%s大于%s，删除name：%s\n",$9,name,name);
         delete names[name];
       }
     }
@@ -61,12 +59,9 @@ $9!="Player"{
     if(names[name]=="shortest"&&len<=length(name))
     {
       names[$9]="shortest";
-      printf("%s小于等于%s\n",$9,name);
       if(len<length(name)){
-        printf("%s小于%s，删除name：%s\n",$9,name,name);
-        delete names[name];};
+        delete names[name];}
     }
-    printf("==================本轮结束=====================\n");
   }
 }
 END{
@@ -90,11 +85,11 @@ END{
       }
       else if(length(temp)==length(name))
       {
-        printf("名字最长的人之1：%s\n",name);
+        printf("名字最长的人之一：%s\n",name);
         flag=1;
       }
       else {printf("名字最长的人之一：%s\n",name);}
-    }
+     }
   }
   if(flag==1){printf("名字最长的人之一：%s\n",temp);}
 }' data
@@ -144,9 +139,10 @@ awk -F '\t' '
         delete YP[j];
       }
       ynum=0;
-      yage=$6
+      yage=$6;
     }
- END{
+  }
+END{
     printf("年龄最大的球员\t\t\t\t年龄最小的球员\n");
     printf("======================================================\n");
     min=ynum<onum?ynum:onum;
