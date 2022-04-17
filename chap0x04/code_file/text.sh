@@ -103,6 +103,9 @@ awk -F '\t' '
   BEGIN{
     onum=0;
     ynum=0;
+    icounter=1;
+    jcounter=1;
+    counter=0;
   }
   $6!="Age"{
     if(NR==2)
@@ -116,7 +119,7 @@ awk -F '\t' '
     if($6>oage)
     {
       OP[0]=$9;
-      for(int i=1;i<onum;i++)
+      for(icounter;icounter<onum;icounter++)
       {
         delete OP[i];
       }
@@ -136,7 +139,7 @@ awk -F '\t' '
     else if($6<yage)
     {
       YP[0]=$9;
-      for(int j=1;j<ynum;j++)
+      for(jcounter;jcounter<ynum;jcounter++)
       {
         delete YP[j];
       }
@@ -147,7 +150,7 @@ awk -F '\t' '
     printf("年龄最大的球员\t\t\t\t\t\t\t\年龄最小的球员\n");
     printf("======================================================\n");
     min=ynum<onum?ynum:onum;
-    for(int counter=0;counter++;counter<min);
+    for(counter;counter++;counter<min);
     {printf("%-26s%-26s\n",OP[counter],YP[counter]);}
     if(onum>ynum)
     {
