@@ -39,14 +39,6 @@ $9!="Player"{
   }
   for(name in names)
   {
-    #判断新加入的元素是否是最长的，或者是不是并列最长的
-    # printf("本轮比较的是%s和%s\n",name,$9);
-    # printf("当前name有：");
-    # for(i in names)
-    # {
-    #   printf("%s:%s\n",i,names[i])
-    # }
-    # printf("***************\n");
     if(names[name]=="longest" && len>=length(name) && name!=$9)
     {
       names[$9]="longest";
@@ -54,6 +46,7 @@ $9!="Player"{
       {
         delete names[name];
       }
+      continue;
     }
     #判断新加入的元素是否是最短的，或者是不是并列最短的
     if(names[name]=="shortest"&&len<=length(name))
@@ -62,6 +55,7 @@ $9!="Player"{
       if(len<length(name)){
         delete names[name];}
     }
+    continue;
   }
 }
 END{
@@ -76,20 +70,17 @@ END{
   }
   for(name in names)
   {
-    if(names[name]=="longest")
+    if(length(temp)>length(name))
     {
-      if(length(temp)>length(name))
-      {
-        printf("名字最长的人：%s\n",temp);
-        break;
-      }
-      else if(length(temp)==length(name))
-      {
-        printf("名字最长的人之一：%s\n",name);
-        flag=1;
-      }
-      else {printf("名字最长的人之一：%s\n",name);}
-     }
+      printf("名字最长的人：%s\n",temp);
+      break;
+    }
+    else if(length(temp)==length(name))
+    {
+      printf("名字最长的人之一：%s\n",name);
+      flag=1;
+    }
+    else {printf("名字最长的人之一：%s\n",name);}
   }
   if(flag==1){printf("名字最长的人之一：%s\n",temp);}
 }' data
