@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 wget -O data https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/worldcupplayerinfo.tsv
 awk -F '\t' '
   BEGIN{
