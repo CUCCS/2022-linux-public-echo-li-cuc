@@ -18,6 +18,8 @@ script:
   - bash pic.sh -c ../img
   - echo "========================================="
   - bash text.sh
+  - echo "\n========================================"
+  - bash text_2.sh -t
 
 after_success:
   - echo "successfully done"
