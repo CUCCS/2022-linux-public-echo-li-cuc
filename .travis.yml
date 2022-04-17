@@ -17,6 +17,7 @@ script:
   - bash pic.sh -p pre -r af ../img
   - bash pic.sh -c ../img
   - echo "========================================="
+  - bash text.sh
 
 after_success:
   - echo "successfully done"
