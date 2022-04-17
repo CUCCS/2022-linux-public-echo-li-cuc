@@ -5,6 +5,7 @@ before_install:
   - sudo apt install -y shellcheck
   - sudo apt install -y imagemagick
   - sudo apt install ghostscript
+  - sudo apt install -y p7zip
 
 script:
   - ls -l
