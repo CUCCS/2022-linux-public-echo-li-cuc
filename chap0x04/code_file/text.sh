@@ -146,8 +146,8 @@ awk -F '\t' '
       ynum=0;
       yage=$6
     }
-  END{
-    printf("年龄最大的球员\t\t\t\t\t\t\t\年龄最小的球员\n");
+ END{
+    printf("年龄最大的球员\t\t\t\t年龄最小的球员\n");
     printf("======================================================\n");
     min=ynum<onum?ynum:onum;
     for(counter;counter++;counter<min);
@@ -166,5 +166,4 @@ awk -F '\t' '
         printf("%*s%-26s\n",26,"",YP[counter]);
       }
     }
-  }
   }' data
