@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-wget -O data https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/worldcupplayerinfo.tsv
+
+function dealwithit {
 awk -F '\t' '
   BEGIN{
     young = 0
@@ -155,3 +156,22 @@ END{
       }
     }
   }' data
+}
+
+function help {
+  echo "-h    show this help"
+  echo "-d    deal with the data(age,position,name)"
+}
+
+while getopts 'dh' operation; do
+  case $operation in
+  d)
+    dealwithit
+    exit 0;;
+  h)
+    help
+    exit 0;;
+  \?)
+    echo "illegal argument";;
+  esac
+done
