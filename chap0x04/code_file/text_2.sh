@@ -21,7 +21,8 @@ function top100host {
             times+=1
             if(times>=100)
             break
-        }' web_log.tsv
+        }
+      }' web_log.tsv
 }
 
 
