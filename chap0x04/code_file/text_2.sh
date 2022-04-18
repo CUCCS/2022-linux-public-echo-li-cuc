@@ -20,6 +20,7 @@ function top100host {
             printf("TOP100:%-30s\n",hosts[host])
             times+=1
             if(times>=100)
+            break
         }' web_log.tsv
 }
 
