@@ -1,6 +1,6 @@
-# wget -O web_log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
+wget -O log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
 
-# p7zip -d web_log.tsv.7z
+p7zip -d log.tsv.7z
 
 function help {
   echo "usage: bash text_2.sh [operation]"
@@ -16,24 +16,24 @@ function help {
 #统计访问来源主机TOP 100和分别对应出现的总次数
 function top100host {
   echo "  times names"
-  awk -F '\t' '{print $1}' web_log.tsv | sort | uniq -c | sort -r -n -k1 | head -100
+  awk -F '\t' '{print $1}' log.tsv | sort | uniq -c | sort -r -n -k1 | head -100
 }
 
 #统计访问来源主机TOP 100 IP和分别对应出现的总次数
 function top100IPs {
   echo "times names"
-  awk -F '\t' 'match($1,/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]/){print $1}' web_log.tsv | sort | uniq -c |sort -r -n -k1 |head -100
+  awk -F '\t' 'match($1,/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]/){print $1}' log.tsv | sort | uniq -c |sort -r -n -k1 |head -100
 }
 
 #统计最频繁被访问的URL TOP 100
 function top100URLs {
   echo "times URL"
-  awk -F '\t' '{print $5}' web_log.tsv | sort | uniq -c | sort -r -n -k1 | head -100
+  awk -F '\t' '{print $5}' log.tsv | sort | uniq -c | sort -r -n -k1 | head -100
 }
 
 #统计不同响应状态码的出现次数和对应百分比
 function statusCodes {
-  awk -F '\t' '$6!="response"{print $6}' web_log.tsv | sort | uniq -c | awk 'BEGIN{total=0}
+  awk -F '\t' '$6!="response"{print $6}' log.tsv | sort | uniq -c | awk 'BEGIN{total=0}
     {total+=$1 
     status[$2]=$1} 
     END{
@@ -51,15 +51,15 @@ function statusCodes {
 #UT4表示‘4’XX的状态码对应的‘U’RL和‘T’imes（次数）
 function UT4 {
   echo "404的top10URL" 
-  awk -F '\t' '$6=="404" {print $5}' web_log.tsv | sort | uniq -c | sort -n -r -k1 | head -10
+  awk -F '\t' '$6=="404" {print $5}' log.tsv | sort | uniq -c | sort -n -r -k1 | head -10
   echo "403的top10URL" 
-  awk -F '\t' '$6!="response"&&$6==403{print $5}' web_log.tsv | sort | uniq -c | sort -n -r -k1 | head -10
+  awk -F '\t' '$6!="response"&&$6==403{print $5}' log.tsv | sort | uniq -c | sort -n -r -k1 | head -10
 }
 
 #给定URL输出TOP 100访问来源主机
 function Utop100 {
   echo "TOP100 hosts for $1"
-  awk -F '\t' -v url="$1" '$5==url{print $1}' web_log.tsv | sort | uniq -c |sort -n -r -k1 | head -100
+  awk -F '\t' -v url="$1" '$5==url{print $1}' log.tsv | sort | uniq -c |sort -n -r -k1 | head -100
 }
 
 
