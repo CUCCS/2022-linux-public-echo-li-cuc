@@ -20,7 +20,13 @@ script:
   - echo "========================================="
   - bash text.sh
   - echo "\n========================================"
+  - bash text_2.sh -h
   - bash text_2.sh -t
+  - bash text_2.sh -i
+  - bash text_2.sh -u
+  - bash text_2.sh -s
+  - bash text_2.sh -4
+  - bash text_2.sh -U /images/NASA-logosmall.gif
 
 after_success:
   - echo "successfully done"
