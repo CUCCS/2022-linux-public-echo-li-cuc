@@ -1,6 +1,6 @@
-wget -O web_log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
+# wget -O web_log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
 
-p7zip -d web_log.tsv.7z
+# p7zip -d web_log.tsv.7z
 
 function help {
   echo "usage: bash text_2.sh [operation]"
