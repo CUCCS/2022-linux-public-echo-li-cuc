@@ -56,11 +56,7 @@ function UT4 {
 #给定URL输出TOP 100访问来源主机
 function Utop100 {
   echo "TOP100 hosts for $1"
-  awk -F '\t' -v url="$1" '$5==url{print $1}' web_log.tsv | sort | uniq -c |sort -n -r -k1 | awk '
-  {
-    if(NR<=100)
-    printf("%s\n",$2)
-  }'
+  awk -F '\t' -vu="$1" '$5==u{print $1}' web_log.tsv | sort | uniq -c |sort -n -r -k1 | head -100
 }
 
 
