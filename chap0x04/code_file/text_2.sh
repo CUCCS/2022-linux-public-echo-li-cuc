@@ -62,7 +62,6 @@ function Utop100 {
     printf("%s\n",$2)
   }'
 }
-}
 
 
 while getopts 'htius4U:' operation; do
