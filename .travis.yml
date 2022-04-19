@@ -11,6 +11,7 @@ script:
   - ls -l
   - cd chap0x04/code_file
   - wget -O web_log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
+  - wget -O data https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/worldcupplayerinfo.tsv
   - p7zip -d web_log.tsv.7z
   - bash pic.sh -h
   - bash pic.sh -b ../img
@@ -20,7 +21,8 @@ script:
   - bash pic.sh -p pre -r af ../img
   - bash pic.sh -c ../img
   - echo "========================================="
-  - bash text.sh
+  - bash text.sh -h
+  - bash text.sh -d
   - echo "\n========================================"
   - bash text_2.sh -h
   - bash text_2.sh -t
