@@ -30,7 +30,7 @@ script:
   - bash text_2.sh -u
   - bash text_2.sh -s
   - bash text_2.sh -4
-  - bash text_2.sh -U /images/NASA-logosmall.gif
+  - bash text_2.sh -U /htbin/wais.pl
 
 after_success:
   - echo "successfully done"
