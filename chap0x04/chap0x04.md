@@ -294,5 +294,5 @@
 - [shell数组详解](https://www.cnblogs.com/liujunjun/p/12398078.html)
 - [awk命令详解](https://itpcb.com/linux/c/awk.html)
 - [uniq命令](https://www.cnblogs.com/delav/p/9953330.html)
-- [imagemagick详解]([ImageMagick 教程_w3cschool](https://www.w3cschool.cn/imagemagick_use/))
+- [imagemagick详解](https://www.w3cschool.cn/imagemagick_use/)
 
