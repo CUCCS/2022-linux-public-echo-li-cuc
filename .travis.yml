@@ -1,0 +1,39 @@
+language: bash
+
+before_install:
+  - sudo apt update
+  - sudo apt install -y shellcheck
+  - sudo apt install -y imagemagick
+  - sudo apt install ghostscript
+  - sudo apt install -y p7zip
+
+script:
+  - ls -l
+  - cd chap0x04/code_file
+  - wget -O web_log.tsv.7z https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z
+  - wget -O data https://c4pr1c3.github.io/LinuxSysAdmin/exp/chap0x04/worldcupplayerinfo.tsv
+  - p7zip -d web_log.tsv.7z
+  - bash pic.sh -h
+  - bash pic.sh -b ../img
+  - bash pic.sh -d ../img
+  - bash pic.sh -s 50% ../img
+  - bash pic.sh -w "i love you more than you ever know" ../img
+  - bash pic.sh -p pre -r af ../img
+  - bash pic.sh -c ../img
+  - echo "========================================="
+  - bash text.sh -h
+  - bash text.sh -d
+  - echo "\n========================================"
+  - bash text_2.sh -h
+  - bash text_2.sh -t
+  - bash text_2.sh -i
+  - bash text_2.sh -u
+  - bash text_2.sh -s
+  - bash text_2.sh -4
+  - bash text_2.sh -U /htbin/wais.pl
+
+after_success:
+  - echo "successfully done"
+
+after_failure:
+  - echo "check failure"
