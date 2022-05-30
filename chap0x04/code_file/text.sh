@@ -139,18 +139,18 @@ END{
     printf("年龄最大的球员\t\t\t\t年龄最小的球员\n");
     printf("======================================================\n");
     min=ynum<onum?ynum:onum;
-    for(counter;counter++;counter<min);
+    for(counter;counter++;counter<=min);
     {printf("%-26s%-26s\n",OP[counter],YP[counter]);}
     if(onum>ynum)
     {
-      for(counter;counter<onum;counter++)
+      for(counter;counter<=onum;counter++)
       {
         printf("%-26s\n",OP[counter]);
       }
     }
     else if(ynum>onum)
     {
-      for(counter;counter<onum;counter++)
+      for(counter;counter<=onum;counter++)
       {
         printf("%*s%-26s\n",26,"",YP[counter]);
       }
