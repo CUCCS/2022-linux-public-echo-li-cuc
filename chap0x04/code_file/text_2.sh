@@ -82,7 +82,7 @@ while getopts 'htius4U:' operation; do
       exit 0 ;;
     U)
       Utop100 "$OPTARG"
-      exit 100 ;;
+      exit 0 ;;
     /?)
       echo "illegal argument"
       exit 0 ;;
