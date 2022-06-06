@@ -116,11 +116,13 @@
 
   <img src="./img/generate_keypair.png" alt="generate_keypair" style="zoom: 50%;" />
 2. 将公钥上传到虚拟机
+   
    ```bash
    ssh-copy-id -i /home/mobaxterm/.ssh/id_rsa_cuc cuc@192.168.56.101
    ```
    ![upload_upkey](./img/upload_pubkey.png)
 3. 尝试免密登录
+   
    ```bash
    ssh -i /home/mobaxterm/.ssh/id_rsa_cuc cuc@192.168.56.101
    ```
@@ -148,6 +150,8 @@ sudo cat /etc/ssh/sshd_config
 ssh -i /home/mobaxterm/.ssh/id_rsa_cuc cuc@192.168.56.101
 ```
 成功登录。
+
+> 补充说明：配置第三块网卡的目的在于复现第二块网卡的配置过程。实验开始之前，我的第二块网卡就能自动获取ip地址了
 
 ## 参考资料
 - [markdown 官方教程](https://markdown.com.cn/)
