@@ -28,14 +28,21 @@
 - **Linux 发行版基本信息**
   查看发行版本信息有多种可选方式。利用`cat /etc/lsb-release`可以简要查看当前发行版本的版本名称、版本号等。
   ![check_distrib_info_lsb-release](./img/check_distrib_info_lsb.png)
+  
   利用`cat /etc/issue`能查看更简洁的发行版本信息
+  
   ![check_distrib_info_issue](./img/check_distrb_info_issue.png)
+  
   或者利用`cat /etc/os-release`查看
+  
   ![che_distrib_info_os-release](./img/check_distrib_info_os.png)
+  
   三种方式都显示本地虚拟机发行版是`Ubantu 20.04.3 LTS`
+  
 - **Linux 内核版本信息**
   查看当前Linux 内核的版本信息也有很多方式。例如使用`uname -r`和`cat /proc/version`都能够查看Linux的内核版本信息。
   ![check_kernel_in_one_png](./img/check_kernel.png)
+  
   当前linux内核版本是`5.4.0-100-generic`
 
 #### 阿里云【零门槛云上实践平台】
@@ -43,10 +50,14 @@
 - **Linux 发行版基本信息**
   同样地，查看云上实践平台的命令也有很多。利用`cat /etc/os-release`,`cat etc/system-release`,`cat /etc/centos-release`,`cat /etc/redhat-release`命令都能查看云上平台的发行版本信息。
   ![check_cloud_distrb_info_mul](./img/check_cloud_distrb_info_mul.png)
+  
   可知当前Linux发行版是`CentOS Linux release 7.7.1908 (Core)`
+  
 - **Linux 内核版本信息**
   利用`uname -r`指令可以查看云上平台Linux 内核的版本信息。
+  
   ![check_cloud_kernel_release](./img/check_cloud_kernel_release.png)
+  
   当前Linux 系统内核版本是`3.10.0-1062.18.1.el7.x86_64`
 
 ### Virtualbox 安装完 Ubuntu 之后新添加的网卡如何实现系统开机自动启用和自动获取 IP？
@@ -54,9 +65,12 @@
 1. 添加新网卡
    在关闭虚拟机后手动添加一块虚拟网卡。由于选择的是Host-Only连接方式，所以需要为该新网卡新增一个`Virtualbox Host-Only Ethernet Adapter`
    ![Virtualbox Host-Only Ethernet Adapter](./img/Virtualbox_Host-Only_Ethernet_Adapter.png)
+   
 2. 查看网卡状态
    使用`ip a`命令查看网卡状态，发现新装的网卡并不能自动获取IP。
+   
    ![add_new_network_card](./img/add_a_new_netcard.png)
+   
 <p align='center' style="color:grey;font-size:13px">对比enp0s8和enp0s9,enp0s9没有获取IP</p>
 
 3. 修改文件配置`00-installer-config.yaml`
